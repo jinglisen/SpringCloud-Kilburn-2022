@@ -1,0 +1,39 @@
+server:
+  port: 8000 # 端口号
+
+spring:
+  application:
+    name: eurekaClient # Eureka名称
+
+info:
+  app:
+    name: eurekaClient
+    encoding: "UTF-8"
+    java:
+      source: "17"
+      target: "17"
+  company:
+    name: www.huerpu.cc
+
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by-default: true
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    hostname: eurekaClient
+  client:
+    healthcheck:
+      enabled: true
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/

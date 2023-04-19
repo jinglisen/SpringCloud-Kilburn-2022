@@ -1,0 +1,22 @@
+server:
+  port: 8762 # 端口号
+
+spring:
+  security:
+    user:
+      name: eureka
+      password: eurekapwd
+  application:
+    name: eurekaServer # Eureka名称
+
+eureka:
+  server:
+    enable-self-preservation: true
+  instance:
+    prefer-ip-address: false
+    hostname: eurekaServerHA
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/
