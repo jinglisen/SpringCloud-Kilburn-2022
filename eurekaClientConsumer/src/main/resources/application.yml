@@ -28,6 +28,7 @@ management:
 
 eureka:
   instance:
+    lease-renewal-interval-in-seconds: 5
     prefer-ip-address: false
     hostname: eurekaClientConsumer
   client:

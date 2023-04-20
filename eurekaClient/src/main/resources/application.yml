@@ -30,6 +30,7 @@ eureka:
   instance:
     prefer-ip-address: false
     hostname: eurekaClient
+    lease-renewal-interval-in-seconds: 5
   client:
     healthcheck:
       enabled: true
