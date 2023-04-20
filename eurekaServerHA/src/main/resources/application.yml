@@ -7,14 +7,16 @@ spring:
       name: eureka
       password: eurekapwd
   application:
-    name: eurekaServer # Eureka名称
+    name: eurekaServer
 
 eureka:
   server:
     enable-self-preservation: true
+    renewal-percent-threshold: 0.49
   instance:
     prefer-ip-address: false
     hostname: eurekaServerHA
+    lease-renewal-interval-in-seconds: 5
   client:
     fetch-registry: true
     register-with-eureka: true
