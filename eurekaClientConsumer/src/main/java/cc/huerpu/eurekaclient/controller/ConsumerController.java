@@ -5,6 +5,8 @@ import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClients;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -21,6 +23,9 @@ public class ConsumerController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
     //获得eurekaClient的url
     @RequestMapping("/eurekaClientServiceUrl")
     private String eurekaClientServiceUrl() {
@@ -30,9 +35,7 @@ public class ConsumerController {
 
     @RequestMapping("/consumerEurekaClient")
     public String consumerEurekaClient(){
-        String eurekaClientURL = eurekaClientServiceUrl()+ "getUserById";
-        System.out.println(eurekaClientURL);
-        String res = restTemplate.getForObject(eurekaClientURL ,String.class);
+        String res = restTemplate.getForObject("http://eurekaClient/getUserById" ,String.class);
         return "consumerEurekaClient:" + res;
     }
 
@@ -40,5 +43,14 @@ public class ConsumerController {
     public List<ServiceInstance> showInfo() {
         return this.discoveryClient.getInstances("eurekaClient");
     }
+
+    @RequestMapping("/eurekaClientConsumerChooseInstance")
+    public String eurekaClientConsumerChooseInstance() {
+        ServiceInstance serviceInstance = loadBalancerClient.choose("eurekaClient");
+        String server = serviceInstance.getInstanceId()+":"+serviceInstance.getHost()+":"+serviceInstance.getPort();
+        System.out.println(server);
+        return server;
+    }
+
 
 }
