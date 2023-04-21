@@ -31,10 +31,12 @@ eureka:
     prefer-ip-address: false
     hostname: eurekaClient
     lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
   client:
     healthcheck:
       enabled: true
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
+      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/ #,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
+    registry-fetch-interval-seconds: 5

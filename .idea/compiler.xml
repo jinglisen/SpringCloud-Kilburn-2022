@@ -8,18 +8,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eurekaServerHA" />
+        <module name="eurekaClient (2)" />
+        <module name="eurekaClient (1)" />
         <module name="eurekaServer" />
-        <module name="eurekaClient" />
         <module name="eurekaClientConsumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="eurekaClient" target="17" />
       <module name="eurekaServerHep" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="eurekaClient" options="-parameters" />
+      <module name="eurekaClient (1)" options="-parameters" />
+      <module name="eurekaClient (2)" options="-parameters" />
       <module name="eurekaClientConsumer" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
       <module name="eurekaServerHA" options="-parameters" />

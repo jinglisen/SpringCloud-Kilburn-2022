@@ -11,12 +11,14 @@ spring:
 
 eureka:
   server:
-    enable-self-preservation: true
+    enable-self-preservation: false
     renewal-percent-threshold: 0.49
+    eviction-interval-timer-in-ms: 5000
   instance:
     prefer-ip-address: false
     hostname: eurekaServerHA
     lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
   client:
     fetch-registry: true
     register-with-eureka: true

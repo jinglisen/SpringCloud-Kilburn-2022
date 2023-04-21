@@ -1,13 +1,13 @@
 server:
-  port: 8001 # 端口号
+  port: 8002 # 端口号
 
 spring:
   application:
-    name: eurekaClientConsumer # Eureka名称
+    name: eurekaClient # Eureka名称
 
 info:
   app:
-    name: eurekaClientConsumer
+    name: eurekaClient
     encoding: "UTF-8"
     java:
       source: "17"
@@ -29,7 +29,7 @@ management:
 eureka:
   instance:
     prefer-ip-address: false
-    hostname: eurekaClientConsumer
+    hostname: eurekaClient
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
   client:
@@ -40,4 +40,5 @@ eureka:
     service-url:
       defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/ #,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
       registry-fetch-interval-seconds: 5
+
 

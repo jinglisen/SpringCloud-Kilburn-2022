@@ -9,18 +9,15 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+//@LoadBalancerClients(defaultConfiguration = {CustomLoadBalancerConfiguration.class})
 public class EurekaClientConsumerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EurekaClientConsumerApplication.class, args);
     }
-
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
-
-
 }
