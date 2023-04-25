@@ -1,13 +1,15 @@
 server:
-  port: 8002 # 端口号
+  port: 8003 # 端口号
 
 spring:
   application:
-    name: eurekaClient # Eureka名称
+    name: openfeignClientConsumer # Eureka名称
+#SpringBoot的日志级别默认为info,大于full,导致feign的日志配置不会输出，所以加以下配置
+logging.level.cc.huerpu.eurekaclient.service: DEBUG
 
 info:
   app:
-    name: eurekaClient
+    name: openfeignClientConsumer
     encoding: "UTF-8"
     java:
       source: "17"
@@ -29,7 +31,7 @@ management:
 eureka:
   instance:
     prefer-ip-address: false
-    hostname: eurekaClient
+    hostname: openfeignClientConsumer
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
   client:
@@ -40,5 +42,4 @@ eureka:
     service-url:
       defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
       registry-fetch-interval-seconds: 5
-
 

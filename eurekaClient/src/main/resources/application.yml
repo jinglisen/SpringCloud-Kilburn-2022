@@ -38,5 +38,5 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/ #,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
+      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
     registry-fetch-interval-seconds: 5

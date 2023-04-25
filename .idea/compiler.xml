@@ -7,15 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="openfeignClientConsumer" />
         <module name="eurekaServerHA" />
         <module name="eurekaClient (2)" />
         <module name="eurekaClient (1)" />
         <module name="eurekaServer" />
-        <module name="eurekaClientConsumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="eurekaClient" target="17" />
+      <module name="eurekaClientConsumer" target="17" />
+      <module name="eurekaClientConsumer (1)" target="17" />
+      <module name="eurekaClientConsumer (2)" target="17" />
       <module name="eurekaServerHep" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -25,9 +28,12 @@
       <module name="eurekaClient (1)" options="-parameters" />
       <module name="eurekaClient (2)" options="-parameters" />
       <module name="eurekaClientConsumer" options="-parameters" />
+      <module name="eurekaClientConsumer (1)" options="-parameters" />
+      <module name="eurekaClientConsumer (2)" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
       <module name="eurekaServerHA" options="-parameters" />
       <module name="eurekaServerHep" options="-parameters" />
+      <module name="openfeignClientConsumer" options="-parameters" />
     </option>
   </component>
 </project>
