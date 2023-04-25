@@ -17,6 +17,16 @@ info:
   company:
     name: www.huerpu.cc
 
+feign:
+  client:
+    config:
+      gulimall-ware:
+        logger-level: FULL
+        # 连接超时时间
+        connectTimeout: 5000
+        # 请求处理超时时间
+        readTimeout: 10000
+        request-interceptors: cc.huerpu.eurekaclient.config.FeignAuthRequestInterceptor
 
 management:
   info:
