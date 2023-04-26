@@ -15,8 +15,8 @@ public class WebSecurityConfig
 {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.authorizeHttpRequests().anyRequest().authenticated().and().httpBasic();
+        http.csrf().ignoringRequestMatchers("/eureka/**");
+        //http.authorizeHttpRequests().anyRequest().authenticated().and().httpBasic();
         return http.build();
     }
 }
