@@ -1,0 +1,33 @@
+server:
+  port: 8761 # 端口号
+
+spring:
+  security:
+    basic:
+      enabled: true
+    user:
+      name: eureka
+      password: eurekapwdprd
+  application:
+    name: hep-eurekaServer-provider-prd # Eureka名称
+
+eureka:
+  server:
+    enable-self-preservation: true
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://eureka:eurekapwdprd@192.168.31.32:8761/eureka/,http://eureka:eurekapwdprd@192.168.31.33:8761/eureka/
+      #defaultZone: http://eureka:eurekapwdprd@192.168.31.31:8761/eureka/,http://eureka:eurekapwdprd@192.168.31.33:8761/eureka/
+      #defaultZone: http://eureka:eurekapwdprd@192.168.31.31:8761/eureka/,http://eureka:eurekapwdprd@192.168.31.32:8761/eureka/
+
+
+
+
+
+
+
+

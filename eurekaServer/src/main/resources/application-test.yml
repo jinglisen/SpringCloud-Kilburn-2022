@@ -1,0 +1,31 @@
+server:
+  port: 8761 # 端口号
+
+spring:
+  security:
+    basic:
+      enabled: true
+    user:
+      name: eureka
+      password: eurekapwdtest
+  application:
+    name: hep-eurekaServer-provider-service-test # Eureka名称
+
+eureka:
+  server:
+    enable-self-preservation: true
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      #defaultZone: http://eureka:eurekapwdtest@192.168.31.35:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.36:8761/eureka/
+      #defaultZone: http://eureka:eurekapwdtest@192.168.31.34:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.36:8761/eureka/
+      defaultZone: http://eureka:eurekapwdtest@192.168.31.34:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.35:8761/eureka/
+
+
+
+
+
+
