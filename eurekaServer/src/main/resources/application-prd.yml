@@ -9,7 +9,7 @@ spring:
       name: eureka
       password: eurekapwdprd
   application:
-    name: hep-eurekaServer-provider-prd # Eureka名称
+    name: hep-eurekaServer-provider-service-prd # Eureka名称
 
 eureka:
   server:
