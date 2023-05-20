@@ -1,0 +1,64 @@
+server:
+  port: 8004 # 端口号
+
+spring:
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+  application:
+    name: resilience4jClientConsumer # Eureka名称
+#SpringBoot的日志级别默认为info,大于full,导致feign的日志配置不会输出，所以加以下配置
+logging.level.cc.huerpu.eurekaclient.service: DEBUG
+
+info:
+  app:
+    name: resilience4jClientConsumer
+    encoding: "UTF-8"
+    java:
+      source: "17"
+      target: "17"
+  company:
+    name: www.huerpu.cc
+
+feign:
+  client:
+    config:
+      gulimall-ware:
+        logger-level: FULL
+        # 连接超时时间
+        connectTimeout: 5000
+        # 请求处理超时时间
+        readTimeout: 10000
+        request-interceptors: cc.huerpu.eurekaclient.config.FeignAuthRequestInterceptor
+
+
+
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by-default: true
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    hostname: resilience4jClientConsumer
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+  client:
+    healthcheck:
+      enabled: true
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://192.168.31.34:8761/eureka/
+      #defaultZone: http://eureka:eurekapwd@192.168.31.31:8761/eureka/,http://eureka:eurekapwd@192.168.31.32:8761/eureka/,http://eureka:eurekapwd@192.168.31.33:8761/eureka/
+      #defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
+      registry-fetch-interval-seconds: 5
+
