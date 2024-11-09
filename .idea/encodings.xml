@@ -13,7 +13,11 @@
     <file url="file://$PROJECT_DIR$/eurekaServerHA/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eurekaServerHep/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eurekaServerHep/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hepGatewayEntrance/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hepGatewayEntrance/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/openfeignClientConsumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/openfeignClientConsumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resilience4jClientConsumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resilience4jClientConsumer/src/main/resources" charset="UTF-8" />
   </component>
 </project>

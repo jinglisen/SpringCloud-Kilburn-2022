@@ -33,6 +33,38 @@ feign:
         request-interceptors: cc.huerpu.eurekaclient.config.FeignAuthRequestInterceptor
 
 
+resilience4j.timelimiter:
+    instances:
+      circuitBreakerDemo:
+        timeoutDuration: 8s
+resilience4j.circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        failureRateThreshold: 30 #失败请求百分⽐，超过这个⽐例，CircuitBreaker变为OPEN状态
+        slidingWindowSize: 10 #滑动窗⼝的⼤⼩，配置COUNT_BASED,表示10个请求，配置TIME_BASED表示10秒
+        minimumNumberOfCalls: 5 #最⼩请求个数，只有在滑动窗⼝内，请求个数达到这个个数，才会触发CircuitBreader对于断路器的判断
+        slidingWindowType: TIME_BASED #滑动窗⼝的类型
+        permittedNumberOfCallsInHalfOpenState: 3 #当CircuitBreaker处于HALF_OPEN状态的时候，允许通过的请求个数
+        automaticTransitionFromOpenToHalfOpenEnabled: true #设置true，表示⾃动从OPEN变成HALF_OPEN，即使没有请求过来
+        waitDurationInOpenState: 2s #从OPEN到HALF_OPEN状态需要等待的时间
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.util.concurrent.TimeoutException
+          - java.io.IOException
+
+    instances:
+      circuitBreakerDemo:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 2s #慢调⽤时间阈值，⾼于这个阈值的呼叫视为慢调⽤，并增加慢调⽤⽐例。
+        slowCallRateThreshold: 30 #慢调⽤百分⽐阈值，断路器把调⽤时间⼤于 slowCallDurationThreshold，视为慢调⽤，当慢调⽤⽐例⼤于阈值，断路器打开，并进⾏服务降级
+        slidingWindowSize: 10 #滑动窗⼝的⼤⼩，配置COUNT_BASED,表示10个请求，配置TIME_BASED表示10秒
+        slidingWindowType: COUNT_BASED
+        minimumNumberOfCalls: 4
+        permittedNumberOfCallsInHalfOpenState: 4
+        waitDurationInOpenState: 2s #从OPEN到HALF_OPEN状态需要等待的时间
+        #recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
 
 
 management:

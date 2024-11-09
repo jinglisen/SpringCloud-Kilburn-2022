@@ -13,7 +13,7 @@ public class ResilienceController {
     private UserService userService;
 
     @RequestMapping("/getUserById")
-    @CircuitBreaker(name = "hepResilience4j")
+    @CircuitBreaker(name = "circuitBreakerDemo")
     public String getUserById(){
         String res = userService.getUserById();
         return "ResilienceController:" + res;

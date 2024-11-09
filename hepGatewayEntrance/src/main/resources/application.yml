@@ -1,13 +1,28 @@
 server:
-  port: 8002 # 端口号
+  port: 8005 # 端口号
 
 spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #启用基于服务发现的路由
+      routes:
+        - id: hep-api-userService
+          uri: lb://EUREKACLIENT
+          predicates:
+            - Path=/**
+          filters:
+            - PrefixPath=/user
+
   application:
-    name: eurekaClient # Eureka名称
+    name: hepGatewayEntrance # Gateway名称
 
 info:
   app:
-    name: eurekaClient
+    name: hepGatewayEntrance
     encoding: "UTF-8"
     java:
       source: "17"
@@ -29,7 +44,7 @@ management:
 eureka:
   instance:
     prefer-ip-address: false
-    hostname: eurekaClient
+    hostname: hepGatewayEntrance
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
   client:
@@ -38,10 +53,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://192.168.31.34:8761/eureka/
-      #defaultZone: http://eureka1:eurekapwd@www.huerpu.cc:8761/eureka/
+      #defaultZone: http://192.168.31.34:8761/eureka/
+      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/ #,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
       #defaultZone: http://eureka:eurekapwd@192.168.31.31:8761/eureka/,http://eureka:eurekapwd@192.168.31.32:8761/eureka/,http://eureka:eurekapwd@192.168.31.33:8761/eureka/
-      #defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
-      registry-fetch-interval-seconds: 5
-
-
+    registry-fetch-interval-seconds: 5

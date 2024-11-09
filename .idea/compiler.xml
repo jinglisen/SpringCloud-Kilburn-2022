@@ -11,12 +11,15 @@
         <module name="eurekaServerHA" />
         <module name="eurekaClient (2)" />
         <module name="eurekaClient (1)" />
+        <module name="hepGatewayEntrance" />
+        <module name="eurekaClientConsumer" />
+        <module name="resilience4jClientConsumer" />
         <module name="eurekaServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="eurekaClient" target="17" />
-      <module name="eurekaClientConsumer" target="17" />
+      <module name="eurekaClient (3)" target="17" />
       <module name="eurekaClientConsumer (1)" target="17" />
       <module name="eurekaClientConsumer (2)" target="17" />
       <module name="eurekaServerHep" target="17" />
@@ -27,13 +30,16 @@
       <module name="eurekaClient" options="-parameters" />
       <module name="eurekaClient (1)" options="-parameters" />
       <module name="eurekaClient (2)" options="-parameters" />
+      <module name="eurekaClient (3)" options="-parameters" />
       <module name="eurekaClientConsumer" options="-parameters" />
       <module name="eurekaClientConsumer (1)" options="-parameters" />
       <module name="eurekaClientConsumer (2)" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
       <module name="eurekaServerHA" options="-parameters" />
       <module name="eurekaServerHep" options="-parameters" />
+      <module name="hepGatewayEntrance" options="-parameters" />
       <module name="openfeignClientConsumer" options="-parameters" />
+      <module name="resilience4jClientConsumer" options="-parameters" />
     </option>
   </component>
 </project>

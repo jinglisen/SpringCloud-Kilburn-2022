@@ -25,4 +25,4 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     serviceUrl:
-      defaultZone: http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
+      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/
