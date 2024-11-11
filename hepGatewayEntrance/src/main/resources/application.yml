@@ -5,9 +5,15 @@ spring:
   main:
     web-application-type: reactive
   cloud:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+      database: 0
     gateway:
-      default-filters:
-        - PrintLog=1,2,3
+      filter:
+        request-rate-limiter:
+          deny-empty-key: true #如果keyResolver返回空key，则拒绝该请求403，默认true表示拒绝，false则表示允许访问
       discovery:
         locator:
           enabled: true #启用基于服务发现的路由
@@ -17,7 +23,13 @@ spring:
           predicates:
             - Path=/**
           filters:
-            - PrefixPath=/user
+          - name: RequestRateLimiter
+            args:
+                key-resolver: '#{@apiKeyResolver}'
+                redis-rate-limiter.replenishRate: 1 #令牌桶每s的填充速度
+                redis-rate-limiter.burstCapacity: 2 #令牌桶容量
+                redis-rate-limiter.requestedTokens: 1 #每个请求消耗多少个令牌
+          - PrefixPath=/user
 
   application:
     name: hepGatewayEntrance # Gateway名称
@@ -55,7 +67,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      #defaultZone: http://192.168.31.34:8761/eureka/
-      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/ #,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
-      #defaultZone: http://eureka:eurekapwd@192.168.31.31:8761/eureka/,http://eureka:eurekapwd@192.168.31.32:8761/eureka/,http://eureka:eurekapwd@192.168.31.33:8761/eureka/
+      defaultZone: http://eureka:eurekapwdtest@www.huerpu.cc:8762/eureka/
     registry-fetch-interval-seconds: 5
+
+
