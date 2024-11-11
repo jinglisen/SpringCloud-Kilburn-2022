@@ -22,7 +22,7 @@
 
 总体调用关系
 
-![interface](http://www.huerpu.cc:6391/images/2024/11/09/Screenshot-2024-11-09-151332.png)
+![Screenshot 2024-11-11 142655](http://www.huerpu.cc:6391/images/2024/11/11/Screenshot-2024-11-11-142655.png)
 
 
 
