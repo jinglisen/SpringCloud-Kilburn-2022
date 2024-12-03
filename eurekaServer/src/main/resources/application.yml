@@ -9,20 +9,28 @@ spring:
       name: eureka
       password: eurekapwd
   application:
-    name: eurekaServer # Eureka名称
+    name: hep-eurekaServer-provider-service-dev # Eureka名称
 
 eureka:
   server:
     enable-self-preservation: true
-    renewal-percent-threshold: 0.85
+    renewal-percent-threshold: 0.49
     eviction-interval-timer-in-ms: 5000
   instance:
-    prefer-ip-address: false
-    hostname: eurekaServer
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
+    prefer-ip-address: true
+    hostname: hep-eurekaServer-dev
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
   client:
     fetch-registry: true
     register-with-eureka: true
-    serviceUrl:
-      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/
+    #serviceUrl:
+      #defaultZone: http://eureka:eurekapwd@192.168.31.58:8762/eureka/
+
+app:
+  id: hep-eureka-server
+apollo:
+  meta: http://192.168.31.51:8080
+  bootstrap:
+    enabled: true
+

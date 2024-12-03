@@ -6,12 +6,11 @@
       <list>
         <option value="$PROJECT_DIR$/eurekaServerHA/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaServer/pom.xml" />
-        <option value="$PROJECT_DIR$/resilience4jClientConsumer/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaClient/pom.xml" />
-        <option value="$PROJECT_DIR$/eurekaClientConsumer/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaClientProvider/pom.xml" />
         <option value="$PROJECT_DIR$/openfeignClientConsumer/pom.xml" />
-        <option value="$PROJECT_DIR$/hepGatewayEntrance/pom.xml" />
+        <option value="$PROJECT_DIR$/eurekaClientConsumer/pom.xml" />
+        <option value="$PROJECT_DIR$/resilience4jClientConsumer/pom.xml" />
       </list>
     </option>
   </component>

@@ -19,13 +19,20 @@ eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
-    serviceUrl:
+    #serviceUrl:
       #defaultZone: http://eureka:eurekapwdtest@192.168.31.35:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.36:8761/eureka/
       #defaultZone: http://eureka:eurekapwdtest@192.168.31.34:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.36:8761/eureka/
-      defaultZone: http://eureka:eurekapwdtest@192.168.31.34:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.35:8761/eureka/
+      #defaultZone: http://eureka:eurekapwdtest@192.168.31.34:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.35:8761/eureka/,http://eureka:eurekapwdtest@192.168.31.36:8761/eureka/
 
 
+app:
+  id: hep-eureka-server
 
+
+apollo:
+  meta: http://192.168.31.52:8080
+  bootstrap:
+    enabled: true
 
 
 
