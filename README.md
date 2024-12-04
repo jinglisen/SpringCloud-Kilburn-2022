@@ -19,7 +19,7 @@
 |    `Maven`     |       3.9.1       |
 | `Spring Cloud` |       4.0.2       |
 |      IDE       |  `idea2023.1 U`   |
-|       OS       | `Windows11`专业版 |
+|       OS       | `Windows11`专业版 && MacOS Sonoma|
 
 总体调用关系
 
