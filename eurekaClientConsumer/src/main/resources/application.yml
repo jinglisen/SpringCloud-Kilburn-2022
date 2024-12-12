@@ -17,6 +17,12 @@ info:
 
 
 management:
+  zipkin:
+    tracing:
+      endpoint: http://192.168.31.12:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
   info:
     env:
       enabled: true
@@ -38,7 +44,6 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      #defaultZone: http://eureka:eurekapwd@192.168.31.31:8761/eureka/,http://eureka:eurekapwd@192.168.31.32:8761/eureka/,http://eureka:eurekapwd@192.168.31.33:8761/eureka/
-      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
+      defaultZone: http://eureka:eurekapwd@192.168.31.58:8761/eureka/
       registry-fetch-interval-seconds: 5
 

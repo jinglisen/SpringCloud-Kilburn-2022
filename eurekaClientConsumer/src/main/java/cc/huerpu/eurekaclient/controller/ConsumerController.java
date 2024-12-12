@@ -35,7 +35,7 @@ public class ConsumerController {
 
     @RequestMapping("/consumerEurekaClient")
     public String consumerEurekaClient(){
-        String res = restTemplate.getForObject("http://eurekaClient/getUserById" ,String.class);
+        String res = restTemplate.getForObject("http://eurekaClient/user/getUserById" ,String.class);
         return "consumerEurekaClient:" + res;
     }
 

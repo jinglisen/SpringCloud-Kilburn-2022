@@ -2,6 +2,22 @@ server:
   port: 8000 # 端口号
 
 spring:
+  rabbitmq:
+    host: 192.168.31.61
+    port: 5672
+    username: admin
+    password: admin
+    listener:
+      direct:
+        retry:
+          enabled: true
+          max-attempts: 5
+          initial-interval: 5000
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 5
+          initial-interval: 5000
   application:
     name: eurekaClient # Eureka名称
 
@@ -15,8 +31,20 @@ info:
   company:
     name: www.huerpu.cc
 
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
 
 management:
+  zipkin:
+    sender:
+      type: rabbit # web 或者 rabbit, kafka 等
+    tracing:
+      endpoint: http://192.168.31.12:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+
   info:
     env:
       enabled: true
@@ -38,6 +66,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      #defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/
-      defaultZone: http://eureka:eurekapwdtest@www.huerpu.cc:8762/eureka/
+      defaultZone: http://eureka:eurekapwd@192.168.31.58:8761/eureka/
     registry-fetch-interval-seconds: 5
+
+#logging.pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

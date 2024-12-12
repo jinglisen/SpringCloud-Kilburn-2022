@@ -2,6 +2,22 @@ server:
   port: 8003 # 端口号
 
 spring:
+  rabbitmq:
+    host: 192.168.31.61
+    port: 5672
+    username: admin
+    password: admin
+    listener:
+      direct:
+        retry:
+          enabled: true
+          max-attempts: 5
+          initial-interval: 5000
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 5
+          initial-interval: 5000
   application:
     name: openfeignClientConsumer # Eureka名称
 #SpringBoot的日志级别默认为info,大于full,导致feign的日志配置不会输出，所以加以下配置
@@ -28,7 +44,20 @@ feign:
         readTimeout: 10000
         request-interceptors: cc.huerpu.eurekaclient.config.FeignAuthRequestInterceptor
 
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
 management:
+  zipkin:
+    sender:
+      type: rabbit # web 或者 rabbit, kafka 等
+    tracing:
+      endpoint: http://192.168.31.12:9411/api/v2/spans
+
+  tracing:
+    sampling:
+      probability: 1.0
   info:
     env:
       enabled: true
@@ -50,6 +79,6 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka:eurekapwd@eurekaServer:8761/eureka/,http://eureka:eurekapwd@eurekaServerHA:8762/eureka/
+      defaultZone: http://eureka:eurekapwd@192.168.31.58:8761/eureka/
       registry-fetch-interval-seconds: 5
 

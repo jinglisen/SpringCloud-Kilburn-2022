@@ -11,6 +11,7 @@
         <module name="eurekaServerHA" />
         <module name="eurekaClient (2)" />
         <module name="eurekaClient (1)" />
+        <module name="hepGatewayEntrance" />
         <module name="eurekaClientConsumer" />
         <module name="resilience4jClientConsumer" />
         <module name="eurekaServer" />
@@ -34,6 +35,7 @@
       <module name="eurekaServer" options="-parameters" />
       <module name="eurekaServerHA" options="-parameters" />
       <module name="eurekaServerHep" options="-parameters" />
+      <module name="hepGatewayEntrance" options="-parameters" />
       <module name="openfeignClientConsumer" options="-parameters" />
       <module name="resilience4jClientConsumer" options="-parameters" />
     </option>

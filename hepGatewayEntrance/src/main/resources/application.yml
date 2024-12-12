@@ -6,7 +6,7 @@ spring:
     web-application-type: reactive
   cloud:
     redis:
-      host: 127.0.0.1
+      host: 192.168.31.80
       port: 6379
       password:
       database: 0
@@ -25,10 +25,10 @@ spring:
           filters:
           - name: RequestRateLimiter
             args:
-                key-resolver: '#{@apiKeyResolver}'
-                redis-rate-limiter.replenishRate: 1 #令牌桶每s的填充速度
-                redis-rate-limiter.burstCapacity: 2 #令牌桶容量
-                redis-rate-limiter.requestedTokens: 1 #每个请求消耗多少个令牌
+                key-resolver: '#{@userIdResolver}'
+                redis-rate-limiter.replenishRate: 10 #令牌桶每s的填充速度
+                redis-rate-limiter.burstCapacity: 20 #令牌桶容量
+                redis-rate-limiter.requestedTokens: 10 #每个请求消耗多少个令牌
           - PrefixPath=/user
 
   application:
@@ -46,6 +46,12 @@ info:
 
 
 management:
+  zipkin:
+    tracing:
+      endpoint: http://192.168.31.12:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
   info:
     env:
       enabled: true
@@ -67,7 +73,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka:eurekapwdtest@www.huerpu.cc:8762/eureka/
+      defaultZone: http://eureka:eurekapwd@192.168.31.58:8761/eureka/
     registry-fetch-interval-seconds: 5
 
 
